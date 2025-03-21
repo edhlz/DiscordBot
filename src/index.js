@@ -1,11 +1,15 @@
-require('dotenv').config()
 const { Client, Events, GatewayIntentBits } = require('discord.js');
+require('dotenv').config();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ 
+	intents: [
+		GatewayIntentBits.Guilds,
+	]
+ });
 
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ligado em: ${readyClient.user.tag}`);
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
